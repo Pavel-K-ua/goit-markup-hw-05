@@ -133,6 +133,27 @@ address {
   letter-spacing: 0.32px;
   padding-top: 24px;
   padding-bottom: 24px;
+  position: relative;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+}
+
+.nav-link::after {
+  display: block;
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--ocean);
+  opacity: 0;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+}
+
+.nav-link:hover::after {
+  opacity: 1;
 }
 
 .nav-link:hover,
@@ -148,6 +169,8 @@ address {
   line-height: 1.5;
   letter-spacing: 0.32px;
   text-decoration: none;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
 }
 
 .hero-section {
@@ -193,11 +216,12 @@ address {
   min-width: 169px;
   height: 56px;
   border: none;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .hero-btn:hover,
 .hero-btn:focus {
-  background: var(--ocean);
+  background-color: var(--ocean);
 }
 
 .section-title {
@@ -300,6 +324,8 @@ address {
   height: 40px;
   background-color: var(--iris);
   border-radius: 50%;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
 }
 
 .social-link:hover,
@@ -339,6 +365,7 @@ address {
   color: var(--light-slate);
   border: 1px solid var(--light-slate);
   border-radius: 4px;
+  transition: border-color, color  250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .client-link:hover,
@@ -396,6 +423,8 @@ address {
   height: 40px;
   background-color: var(--iris);
   border-radius: 50%;
+  transition: background-color  250ms cubic-bezier(0.4, 0, 0.2, 1);
+
 }
 
 .footer-social-link:hover,
@@ -424,22 +453,24 @@ address {
 }
 
 .filter-btn {
-  font-family: "Roboto", sans-serif;
   color: var(--iris);
   text-align: center;
   font-size: 16px;
   font-weight: 500;
   line-height: 1.5;
   letter-spacing: 0.04em;
-  background: var(--cloud);
+  background-color: var(--cloud);
   padding: 12px 24px;
   border-radius: 4px;
   border: 1px solid var(--cornflower);
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  /* transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1); */
+
 }
 
 .filter-btn:hover,
 .filter-btn:focus {
-  background: var(--ocean);
+  background-color: var(--ocean);
   cursor: pointer;
   color: var(--white);
   border: 1px solid transparent;
@@ -462,6 +493,37 @@ address {
 
 .project-link {
   display: block;
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project-img-box {
+  display: block;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Overlay text */
+.overlay {
+  padding: 40px 32px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateY(100%);
+  width: 100%;
+  height: 100%;
+  background-color: var(--iris);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+}
+.project-link:hover .overlay {
+  transform: translateY(0);
+}
+.overlay-text {
+  color: var(--cloud);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0.32px;
 }
 
 .prj-item-text {
@@ -507,4 +569,57 @@ address {
   line-height: 24px;
   letter-spacing: 0.32px;
   width: 264px;
+}
+
+
+/* MODAL */
+
+.backdrop {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(46, 47, 66, 0.40);
+  backdrop-filter: blur(3px);
+  opacity: 1;
+  transition: opacity 0.4s;
+}
+
+.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 408px;
+  height: 584px;
+  border-radius: 4px;
+  background: var(--dairy);
+  box-shadow: 0px 2px 1px 0px rgba(47, 19, 19, 0.2), 0px 1px 3px 0px rgba(0, 0, 0, 0.12), 0px 1px 1px 0px rgba(0, 0, 0, 0.14);
+}
+
+.modal-btn {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 24px;
+  height: 24px;
+  border: 1px solid rgba(0, 0, 0, 0.10);
+  border-radius: 50%;
+  background: var(--cornflower);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  cursor: pointer;
+
+}
+.modal-icon {
+  fill: var(--navy-blue);
 }
